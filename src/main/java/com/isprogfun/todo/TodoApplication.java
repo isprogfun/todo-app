@@ -18,8 +18,17 @@ public class TodoApplication {
 		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://database:5432/todo-db", "admin", "secret")) {
 			Statement statement = connection.createStatement();
 
-			String usersTableSql = "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL);";
-			String tasksTableSql = "CREATE TABLE IF NOT EXISTS tasks (id SERIAL PRIMARY KEY, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL);";
+			String usersTableSql = "CREATE TABLE IF NOT EXISTS users (" +
+				"id SERIAL PRIMARY KEY," +
+				"name TEXT NOT NULL," +
+				"email TEXT NOT NULL" +
+			");";
+			String tasksTableSql = "CREATE TABLE IF NOT EXISTS tasks (" +
+				"id SERIAL PRIMARY KEY," +
+				"title TEXT NOT NULL," +
+				"description TEXT NOT NULL," +
+				"status TEXT NOT NULL" +
+			");";
 
 			statement.execute(usersTableSql);
 			statement.execute(tasksTableSql);
